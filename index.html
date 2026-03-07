@@ -114,6 +114,14 @@
       color: var(--color-gold);
       font-weight: 600;
       letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .navbar-brand img {
+      height: 36px;
+      width: auto;
     }
 
     .navbar-links {
@@ -183,11 +191,14 @@
       pointer-events: none;
     }
 
-    .hero-dice {
-      font-size: 3.5rem;
+    .hero-logo {
+      width: 160px;
+      height: auto;
       margin-bottom: 1.5rem;
-      /* Animation subtile de rebond */
+      /* Animation subtile de flottement */
       animation: float 3s ease-in-out infinite;
+      /* Ombre portée pour décoller le logo du fond sombre */
+      filter: drop-shadow(0 4px 20px rgba(212, 168, 67, 0.2));
     }
 
     @keyframes float {
@@ -522,42 +533,48 @@
        =========================================== */
     .activities-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
       margin-top: 2rem;
     }
 
     .activity-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      border: 1px solid rgba(0,0,0,0.06);
-      text-align: center;
-      transition: transform 0.2s;
+      background: linear-gradient(135deg, var(--color-bg-medium) 0%, rgba(22, 33, 62, 0.8) 100%);
+      border-radius: 12px;
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--color-border);
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: transform 0.2s, border-color 0.3s, box-shadow 0.3s;
     }
 
     .activity-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .section--dark .activity-card {
-      background: var(--color-bg-medium);
-      border-color: var(--color-border);
+      transform: translateY(-3px);
+      border-color: var(--color-gold);
+      box-shadow: 0 4px 20px rgba(212, 168, 67, 0.1);
     }
 
     .activity-card .card-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      flex-shrink: 0;
+      width: 2.5rem;
+      text-align: center;
+      padding-top: 0.15rem;
     }
 
-    .activity-card h3 {
+    .activity-card-text h3 {
+      font-family: var(--font-heading);
       font-size: 0.95rem;
       color: var(--color-gold);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
-    .activity-card p {
-      font-size: 0.85rem;
+    .activity-card-text p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
     }
 
     /* ===========================================
@@ -688,6 +705,10 @@
       .cards {
         grid-template-columns: 1fr;
       }
+
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Mobile petit */
@@ -715,7 +736,10 @@
        ============================================= -->
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="navbar-inner">
-      <a href="#accueil" class="navbar-brand">La Guilde</a>
+      <a href="#accueil" class="navbar-brand">
+        <img src="logo_guilde.png" alt="Logo La Guilde">
+        La Guilde
+      </a>
 
       <!-- Bouton hamburger (mobile uniquement) -->
       <button class="navbar-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -737,7 +761,7 @@
        HERO — Écran d'accueil avec titre et accroche
        ============================================= -->
   <section class="hero" id="accueil">
-    <div class="hero-dice">🎲</div>
+    <img src="logo_guilde.png" alt="Logo La Guilde de Poitiers" class="hero-logo">
     <h1>Bienvenue à La Guilde de Poitiers&nbsp;!</h1>
     <p class="hero-subtitle">
       Tu cherches des parties de jeu de rôle à Poitiers&nbsp;? Tu es au bon endroit&nbsp;!
@@ -982,7 +1006,7 @@
       <ul style="list-style:none; margin-top:1rem;">
         <li style="padding:0.3rem 0;">
           📝 <strong>En ligne&nbsp;:</strong>
-          <a href="https://foyerduporteau.fr/adhesion" target="_blank" rel="noopener">foyerduporteau.fr/adhésion</a>
+          <a href="https://www.foyerduporteau.fr/adhesion" target="_blank" rel="noopener">foyerduporteau.fr/adhésion</a>
           (il faudra quand même passer remplir le formulaire papier sur place)
         </li>
         <li style="padding:0.3rem 0;">
@@ -1045,23 +1069,31 @@
       <div class="activities-grid">
         <div class="activity-card">
           <div class="card-icon">🏰</div>
-          <h3>Sous l'Œil de Mélusine</h3>
-          <p>Notre convention annuelle de JDR, généralement en mai.</p>
+          <div class="activity-card-text">
+            <h3>Sous l'Œil de Mélusine</h3>
+            <p>Notre convention annuelle de JDR, généralement en mai.</p>
+          </div>
         </div>
         <div class="activity-card">
           <div class="card-icon">🎃</div>
-          <h3>Soirées à thème</h3>
-          <p>Chandeleur, Halloween, rentrée… Des occasions de jouer et de partager un repas.</p>
+          <div class="activity-card-text">
+            <h3>Soirées à thème</h3>
+            <p>Chandeleur, Halloween, rentrée… Des occasions de jouer et de partager un repas.</p>
+          </div>
         </div>
         <div class="activity-card">
           <div class="card-icon">💬</div>
-          <h3>Le forum</h3>
-          <p>Pour discuter, échanger, et mieux connaître les autres membres.</p>
+          <div class="activity-card-text">
+            <h3>Le forum</h3>
+            <p>Pour discuter, échanger, et mieux connaître les autres membres.</p>
+          </div>
         </div>
         <div class="activity-card">
           <div class="card-icon">📸</div>
-          <h3>Trombinoscope Discord</h3>
-          <p>Pour mettre des visages sur les pseudos&nbsp;!</p>
+          <div class="activity-card-text">
+            <h3>Trombinoscope Discord</h3>
+            <p>Pour mettre des visages sur les pseudos&nbsp;!</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1070,7 +1102,7 @@
   <!-- =============================================
        CONTACT & LIENS UTILES
        ============================================= -->
-  <section class="section" id="contact">
+  <section class="section section--dark" id="contact">
     <div class="section-inner" style="text-align:center;">
       <h2 class="centered">Nous contacter</h2>
 
@@ -1091,9 +1123,9 @@
 
       <div class="useful-links">
         <h3 style="font-size:1rem; margin-bottom:0.75rem;">Liens utiles</h3>
-        <a href="https://foyerduporteau.fr" target="_blank" rel="noopener">Site du Foyer du Porteau</a>
-        <a href="https://laguilde-poitiers.com/reglement" target="_blank" rel="noopener">Règlement intérieur</a>
-        <a href="https://laguilde-poitiers.com/tables" target="_blank" rel="noopener">Mise en place des tables</a>
+        <a href="https://www.foyerduporteau.fr/" target="_blank" rel="noopener">Site du Foyer du Porteau</a>
+        <a href="https://forum.laguilde-poitiers.com/viewtopic.php?t=1100" target="_blank" rel="noopener">Règlement intérieur</a>
+        <a href="https://forum.laguilde-poitiers.com/viewforum.php?f=10" target="_blank" rel="noopener">Mise en place des tables</a>
       </div>
     </div>
   </section>
@@ -1118,7 +1150,7 @@
   <footer class="footer">
     <p>
       La Guilde — Section JDR du
-      <a href="https://foyerduporteau.fr" target="_blank" rel="noopener">Foyer du Porteau</a>
+      <a href="https://www.foyerduporteau.fr/" target="_blank" rel="noopener">Foyer du Porteau</a>
       — Poitiers
     </p>
   </footer>
