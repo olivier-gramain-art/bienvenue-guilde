@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Guilde de Poitiers — Jeu de Rôle</title>
+  <meta name="description" content="La Guilde de Poitiers : association de jeu de rôle. Rejoins-nous tous les vendredis soir pour des parties de JDR conviviales !">
+
+  <!-- ============================================================
+       SITE ONE-PAGE — LA GUILDE DE POITIERS
+       Site vitrine pour l'association de jeu de rôle "La Guilde",
+       section JDR du Foyer du Porteau à Poitiers.
+       Fichier unique, autonome, sans dépendance externe (hors fonts).
+       ============================================================ -->
+
+  <!-- Google Fonts : Cinzel (titres, esprit fantasy élégant) + Inter (corps, lisibilité) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================================
+       VARIABLES CSS — Palette et typographie
+       Tons bleu nuit / violet avec accents dorés
+       =========================================== */
+    :root {
+      --color-bg-dark: #1a1a2e;
+      --color-bg-medium: #16213e;
+      --color-bg-light: #f5f0eb;
+      --color-bg-alt: #eae2d6;
+      --color-gold: #d4a843;
+      --color-gold-light: #f0d590;
+      --color-text-light: #e8e8e8;
+      --color-text-dark: #2c2c2c;
+      --color-text-muted: #b0a89e;
+      --color-accent: #6c5ce7;
+      --color-accent-soft: rgba(108, 92, 231, 0.15);
+      --color-border: rgba(212, 168, 67, 0.3);
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+      --max-width: 900px;
+      --section-padding: 5rem 2rem;
+    }
+
+    /* ===========================================
+       RESET & BASE
+       =========================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 70px; /* Compense la navbar fixe */
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--color-text-dark);
+      background: var(--color-bg-light);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      line-height: 1.3;
+    }
+
+    a {
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--color-gold-light);
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* ===========================================
+       NAVIGATION FIXE
+       Barre de navigation collée en haut de page
+       =========================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 46, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 2rem;
+    }
+
+    .navbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    .navbar-brand {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      color: var(--color-gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      color: var(--color-text-light);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+
+    .navbar-links a:hover {
+      color: var(--color-gold);
+    }
+
+    /* Bouton hamburger pour mobile */
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .navbar-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--color-text-light);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ===========================================
+       HERO — Section d'accueil plein écran
+       Fond sombre avec dégradé, titre centré
+       =========================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-bg-medium) 50%, #0f3460 100%);
+      color: var(--color-text-light);
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Effet décoratif subtil en arrière-plan (cercle flou) */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 70%);
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero-dice {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      /* Animation subtile de rebond */
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      max-width: 600px;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .hero-cta:hover {
+      background: var(--color-gold);
+      color: var(--color-bg-dark);
+    }
+
+    /* ===========================================
+       SECTIONS — Styles communs
+       Alternance fond clair / fond sombre
+       =========================================== */
+    .section {
+      padding: var(--section-padding);
+    }
+
+    .section-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 1.5rem;
+      color: var(--color-bg-dark);
+      position: relative;
+      padding-bottom: 0.75rem;
+    }
+
+    /* Trait doré sous les titres de section */
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--color-gold);
+      border-radius: 2px;
+    }
+
+    .section h2.centered {
+      text-align: center;
+    }
+
+    .section h2.centered::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Sections à fond sombre */
+    .section--dark {
+      background: var(--color-bg-dark);
+      color: var(--color-text-light);
+    }
+
+    .section--dark h2 {
+      color: var(--color-gold);
+    }
+
+    /* Sections à fond alterné (beige léger) */
+    .section--alt {
+      background: var(--color-bg-alt);
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ===========================================
+       CARDS — Boîtes d'information réutilisables
+       =========================================== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .section--dark .card {
+      background: var(--color-bg-medium);
+      border-color: var(--color-border);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+      color: var(--color-gold);
+    }
+
+    .card p, .card address {
+      font-size: 0.95rem;
+      font-style: normal;
+      line-height: 1.7;
+    }
+
+    /* ===========================================
+       BUREAU — Liste des membres du bureau
+       =========================================== */
+    .bureau-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .bureau-list li {
+      padding: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+
+    .bureau-list li strong {
+      color: var(--color-gold);
+    }
+
+    /* ===========================================
+       ÉTAPES — Liste numérotée stylisée
+       Pour "Ta première venue" et processus
+       =========================================== */
+    .steps {
+      list-style: none;
+      counter-reset: step-counter;
+      margin-top: 1.5rem;
+    }
+
+    .steps li {
+      counter-increment: step-counter;
+      padding: 1rem 0 1rem 3.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .section--dark .steps li {
+      border-bottom-color: var(--color-border);
+    }
+
+    .steps li:last-child {
+      border-bottom: none;
+    }
+
+    /* Numéro circulaire doré */
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--color-gold);
+      color: var(--color-bg-dark);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps li strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ===========================================
+       TABLEAU — Lexique
+       =========================================== */
+    .lexique-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .lexique-table thead {
+      background: var(--color-bg-dark);
+      color: var(--color-gold);
+    }
+
+    .lexique-table th {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+    }
+
+    .lexique-table td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      vertical-align: top;
+    }
+
+    .lexique-table td:first-child {
+      font-weight: 600;
+      color: var(--color-bg-dark);
+      white-space: nowrap;
+      width: 160px;
+    }
+
+    .lexique-table tbody tr:hover {
+      background: var(--color-accent-soft);
+    }
+
+    /* ===========================================
+       TARIFS — Mise en forme de la section adhésion
+       =========================================== */
+    .tarif-box {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .section--dark .tarif-box {
+      background: var(--color-bg-medium);
+    }
+
+    .tarif-price {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      color: var(--color-gold);
+      font-weight: 700;
+    }
+
+    .tarif-price small {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 400;
+      margin-top: 0.25rem;
+    }
+
+    .tarif-details {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* ===========================================
+       RÈGLES DE VIE — Liste avec icônes
+       =========================================== */
+    .rules-list {
+      list-style: none;
+      margin-top: 1.5rem;
+    }
+
+    .rules-list li {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .section--dark .rules-list li {
+      border-bottom-color: var(--color-border);
+    }
+
+    .rules-list li:last-child {
+      border-bottom: none;
+    }
+
+    .rules-list h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-bg-dark);
+    }
+
+    .section--dark .rules-list h3 {
+      color: var(--color-gold);
+    }
+
+    .rules-list p {
+      font-size: 0.95rem;
+    }
+
+    /* ===========================================
+       ACTIVITÉS — Grille de cards
+       =========================================== */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .activity-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .section--dark .activity-card {
+      background: var(--color-bg-medium);
+      border-color: var(--color-border);
+    }
+
+    .activity-card .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-card h3 {
+      font-size: 0.95rem;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-card p {
+      font-size: 0.85rem;
+    }
+
+    /* ===========================================
+       CONTACT — Section finale
+       =========================================== */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .contact-link:hover {
+      background: rgba(212, 168, 67, 0.1);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    .useful-links {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .useful-links a {
+      display: inline-block;
+      margin: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* ===========================================
+       CALLOUT — Encadré mis en avant
+       =========================================== */
+    .callout {
+      background: var(--color-accent-soft);
+      border-left: 4px solid var(--color-accent);
+      border-radius: 0 8px 8px 0;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .section--dark .callout {
+      background: rgba(108, 92, 231, 0.1);
+    }
+
+    .callout-warning {
+      background: rgba(212, 168, 67, 0.1);
+      border-left-color: var(--color-gold);
+    }
+
+    /* ===========================================
+       FOOTER
+       =========================================== */
+    .footer {
+      background: var(--color-bg-dark);
+      color: var(--color-text-muted);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer a {
+      color: var(--color-gold);
+    }
+
+    /* ===========================================
+       HIGHLIGHT TEXT — Texte doré pour emphase
+       =========================================== */
+    .gold {
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    /* ===========================================
+       RESPONSIVE — Adaptations mobile / tablette
+       =========================================== */
+
+    /* Tablette et en-dessous */
+    @media (max-width: 768px) {
+      :root {
+        --section-padding: 3.5rem 1.25rem;
+      }
+
+      /* Affiche le bouton hamburger, masque les liens */
+      .navbar-toggle {
+        display: block;
+      }
+
+      .navbar-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(26, 26, 46, 0.98);
+        flex-direction: column;
+        padding: 1rem 2rem;
+        gap: 0.75rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .navbar-links.open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 5rem 1.5rem 3rem;
+      }
+
+      .lexique-table td:first-child {
+        white-space: normal;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Mobile petit */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .contact-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-link {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =============================================
+       NAVIGATION — Barre fixe en haut
+       ============================================= -->
+  <nav class="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="navbar-inner">
+      <a href="#accueil" class="navbar-brand">La Guilde</a>
+
+      <!-- Bouton hamburger (mobile uniquement) -->
+      <button class="navbar-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="navbar-links">
+        <li><a href="#jdr">Le JDR</a></li>
+        <li><a href="#qui">Qui sommes-nous</a></li>
+        <li><a href="#infos">Infos pratiques</a></li>
+        <li><a href="#premiere-venue">Première venue</a></li>
+        <li><a href="#adhesion">Adhésion</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =============================================
+       HERO — Écran d'accueil avec titre et accroche
+       ============================================= -->
+  <section class="hero" id="accueil">
+    <div class="hero-dice">🎲</div>
+    <h1>Bienvenue à La Guilde de Poitiers&nbsp;!</h1>
+    <p class="hero-subtitle">
+      Tu cherches des parties de jeu de rôle à Poitiers&nbsp;? Tu es au bon endroit&nbsp;!
+      Que tu sois un·e vétéran·e aguerri·e ou que tu découvres tout juste le JDR,
+      il y a une place pour toi à La Guilde.
+    </p>
+    <a href="#premiere-venue" class="hero-cta">Rejoins-nous</a>
+  </section>
+
+  <!-- =============================================
+       C'EST QUOI LE JDR ?
+       ============================================= -->
+  <section class="section" id="jdr">
+    <div class="section-inner">
+      <h2>C'est quoi le jeu de rôle&nbsp;?</h2>
+      <p>
+        Le jeu de rôle (JDR), c'est un jeu de société où chaque participant·e incarne un personnage
+        dans une histoire collaborative. Un·e meneur·euse de jeu (MJ) pose le décor et fait vivre
+        l'univers, tandis que les joueur·euse·s décident des actions de leurs personnages.
+        Pas de plateau, pas de gagnant·e&nbsp;: juste une aventure à vivre ensemble autour d'une table.
+      </p>
+      <p>
+        👉 Pour en savoir plus&nbsp;:
+        <a href="https://www.ffjdr.org/ce-que-sont-les-jeux-de-roles/" target="_blank" rel="noopener">
+          Qu'est-ce que le Jeu de Rôle&nbsp;?
+        </a>
+      </p>
+      <div class="callout">
+        Le JDR, ça se vit&nbsp;! La meilleure façon de comprendre, c'est de participer à une partie.
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       QUI SOMMES-NOUS ?
+       ============================================= -->
+  <section class="section section--dark" id="qui">
+    <div class="section-inner">
+      <h2>Qui sommes-nous&nbsp;?</h2>
+      <p>
+        La Guilde est la section jeux de rôle du <strong>Foyer du Porteau</strong>, une association
+        poitevine qui nous met à disposition la salle Gérard Gaschet. Nous regroupons des
+        passionné·e·s de JDR de Poitiers et sa région, avec un objectif simple&nbsp;:
+        <span class="gold">jouer, partager, et faire découvrir notre passion</span>.
+      </p>
+      <h3 style="font-size:1.1rem; margin-top:1.5rem; color:var(--color-gold);">Notre bureau actuel</h3>
+      <ul class="bureau-list">
+        <li><strong>Responsable de section&nbsp;:</strong> Abramie</li>
+        <li><strong>Membres&nbsp;:</strong> Atanor, Pieuvrelle, Olive</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =============================================
+       INFOS PRATIQUES — Lieu & horaires
+       ============================================= -->
+  <section class="section section--alt" id="infos">
+    <div class="section-inner">
+      <h2>Infos pratiques</h2>
+      <div class="cards">
+        <!-- Card Lieu -->
+        <div class="card">
+          <div class="card-icon">📍</div>
+          <h3>Lieu</h3>
+          <address>
+            Salle Gérard Gaschet<br>
+            138 rue de la Grange Saint Pierre<br>
+            86000 POITIERS
+          </address>
+        </div>
+        <!-- Card Horaires -->
+        <div class="card">
+          <div class="card-icon">🕐</div>
+          <h3>Horaires</h3>
+          <p>
+            <strong>Tous les vendredis soir</strong><br>
+            Ouverture&nbsp;: 20h30<br>
+            Début des parties&nbsp;: 21h00<br>
+            Fermeture&nbsp;: 2h00
+          </p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:2rem;">
+        Consulte la section «&nbsp;Mise en place des tables&nbsp;» du
+        <a href="https://laguilde-poitiers.com" target="_blank" rel="noopener">forum</a>
+        pour confirmer l'ouverture de la salle chaque semaine.
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       TA PREMIÈRE VENUE
+       ============================================= -->
+  <section class="section" id="premiere-venue">
+    <div class="section-inner">
+      <h2>Ta première venue</h2>
+      <p>
+        Bonne nouvelle&nbsp;: <span class="gold">tes 2 premières soirées sont gratuites&nbsp;!</span>
+        Pas besoin de régler la cotisation tout de suite, surtout si tu découvres le JDR.
+      </p>
+
+      <h3 style="margin-top:2rem; font-size:1.1rem;">Comment ça se passe&nbsp;?</h3>
+
+      <ol class="steps">
+        <li>
+          <strong>Avant de venir</strong>
+          Inscris-toi sur une table via le <a href="https://laguilde-poitiers.com" target="_blank" rel="noopener">forum</a>
+          (section «&nbsp;Mise en place des tables&nbsp;»)&nbsp;; choisis une table ou viens en «&nbsp;sans table&nbsp;».
+          Présente-toi sur Discord (pas obligatoire, mais on y discute pas mal 🙂).
+        </li>
+        <li>
+          <strong>Sur place</strong>
+          Présente-toi, on t'accueillera et on t'orientera vers ta table.
+        </li>
+        <li>
+          <strong>Après la partie</strong>
+          Tout le monde participe au ménage (10 minutes à peine si on s'y met tou·te·s&nbsp;!).
+        </li>
+      </ol>
+
+      <div class="callout">
+        Tu peux aussi venir juste pour observer, mais on te conseille vraiment de te lancer&nbsp;:
+        le JDR, ça se vit&nbsp;!
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ORGANISATION DES PARTIES
+       ============================================= -->
+  <section class="section section--dark" id="organisation">
+    <div class="section-inner">
+      <h2>L'organisation des parties</h2>
+      <p>
+        Les soirées proposées couvrent en général les 4&nbsp;vendredis à venir.
+      </p>
+
+      <h3 style="margin-top:1.5rem; font-size:1.05rem; color:var(--color-gold);">Comment ça marche&nbsp;?</h3>
+      <ol class="steps">
+        <li>
+          <strong>Les MJ proposent leurs tables</strong>
+          Ils indiquent le jeu, l'heure de début, le nombre de places et quelques autres infos.
+        </li>
+        <li>
+          <strong>Les joueur·euse·s s'inscrivent</strong>
+          Sur la table de leur choix, dans la limite des places disponibles.
+        </li>
+        <li>
+          <strong>Le vendredi soir, c'est parti&nbsp;!</strong>
+          Les parties se lancent.
+        </li>
+      </ol>
+
+      <h3 style="margin-top:2rem; font-size:1.05rem; color:var(--color-gold);">Si tu viens en «&nbsp;sans table&nbsp;»</h3>
+      <p>
+        Pas de panique&nbsp;! Juste avant le lancement des parties, on réunit les personnes non inscrites
+        et on répartit les places restantes par ordre d'inscription sur le forum.
+        <span class="gold">Les nouveaux·elles ont la priorité.</span>
+      </p>
+      <div class="callout callout-warning">
+        ⚠️ <strong>Important&nbsp;:</strong> même si un·e MJ t'a dit qu'il y avait de la place,
+        tu dois passer par la répartition. Pas de grillage de file&nbsp;!
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       LEXIQUE — Tableau des termes du JDR
+       ============================================= -->
+  <section class="section" id="lexique">
+    <div class="section-inner">
+      <h2>Lexique</h2>
+      <div style="overflow-x:auto;">
+        <table class="lexique-table">
+          <thead>
+            <tr>
+              <th>Terme</th>
+              <th>Définition</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>One-shot</td>
+              <td>Partie unique, qui se joue en une seule soirée. Idéal pour découvrir un jeu ou pour les soirées ponctuelles.</td>
+            </tr>
+            <tr>
+              <td>Campagne ouverte</td>
+              <td>Suite de parties liées entre elles, mais où les joueur·euse·s peuvent changer d'une séance à l'autre.</td>
+            </tr>
+            <tr>
+              <td>Campagne fermée</td>
+              <td>Suite de parties avec un groupe fixe de joueur·euse·s qui suivent la même histoire sur plusieurs séances.</td>
+            </tr>
+            <tr>
+              <td>Table de secours</td>
+              <td>Table improvisée quand il y a plus de joueur·euse·s que prévu, souvent avec un one-shot.</td>
+            </tr>
+            <tr>
+              <td>MJ</td>
+              <td>Meneur·euse de Jeu — la personne qui anime la partie et fait vivre l'univers.</td>
+            </tr>
+            <tr>
+              <td>Sans table</td>
+              <td>Joueur·euse qui vient sans s'être inscrit·e à une table au préalable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       ADHÉSION — Tarifs et modalités
+       ============================================= -->
+  <section class="section section--dark" id="adhesion">
+    <div class="section-inner">
+      <h2>Adhésion</h2>
+      <p>Âge minimum&nbsp;: <strong>16 ans révolus</strong></p>
+
+      <div class="cards">
+        <div class="tarif-box">
+          <div class="tarif-price">
+            16€
+            <small>1 personne / an</small>
+          </div>
+          <p class="tarif-details">de septembre à septembre</p>
+        </div>
+        <div class="tarif-box">
+          <div class="tarif-price">
+            11€
+            <small>membre supplémentaire</small>
+          </div>
+          <p class="tarif-details">même foyer</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:2rem;">
+        L'adhésion devient obligatoire à partir de ta <strong>troisième participation</strong>.
+      </div>
+
+      <h3 style="margin-top:2rem; font-size:1.05rem; color:var(--color-gold);">Comment adhérer&nbsp;?</h3>
+      <ul style="list-style:none; margin-top:1rem;">
+        <li style="padding:0.3rem 0;">
+          📝 <strong>En ligne&nbsp;:</strong>
+          <a href="https://foyerduporteau.fr/adhesion" target="_blank" rel="noopener">foyerduporteau.fr/adhésion</a>
+          (il faudra quand même passer remplir le formulaire papier sur place)
+        </li>
+        <li style="padding:0.3rem 0;">
+          🏠 <strong>Sur place&nbsp;:</strong> avant le début des parties, par liquide, chèque ou carte bleue
+        </li>
+      </ul>
+
+      <p style="margin-top:1.5rem;">
+        🎁 <strong>Bonus&nbsp;:</strong> l'adhésion te donne des réductions dans les boutiques de jeux de Poitiers&nbsp;!
+      </p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       RÈGLES DE VIE
+       ============================================= -->
+  <section class="section section--alt" id="regles">
+    <div class="section-inner">
+      <h2>Règles de vie</h2>
+      <p>Pour que nos soirées se passent bien, quelques règles simples&nbsp;:</p>
+
+      <ul class="rules-list">
+        <li>
+          <h3>1. Préviens si tu ne viens pas</h3>
+          <p>
+            Tu t'es inscrit·e mais tu as un empêchement&nbsp;? Pas de souci, ça arrive à tout le monde.
+            Mais préviens via le forum ou Discord. Ton·ta MJ et les autres joueur·euse·s t'attendent&nbsp;!
+          </p>
+        </li>
+        <li>
+          <h3>2. Respecte l'ordre de répartition des sans tables</h3>
+          <p>
+            Pas de passage en force sur une table qui te fait envie. On respecte l'ordre d'inscription.
+          </p>
+        </li>
+        <li>
+          <h3>3. Participe au ménage</h3>
+          <p>
+            Après les parties, tout le monde met la main à la pâte.
+            Balai, éponge, rangement&nbsp;: en 10 minutes c'est plié si on s'y met ensemble.
+          </p>
+        </li>
+        <li>
+          <h3>4. Sois respectueux·se</h3>
+          <p>
+            On attend simplement une attitude correcte et bienveillante envers tou·te·s les membres.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =============================================
+       NOS AUTRES ACTIVITÉS
+       ============================================= -->
+  <section class="section section--dark" id="activites">
+    <div class="section-inner">
+      <h2>Nos autres activités</h2>
+
+      <div class="activities-grid">
+        <div class="activity-card">
+          <div class="card-icon">🏰</div>
+          <h3>Sous l'Œil de Mélusine</h3>
+          <p>Notre convention annuelle de JDR, généralement en mai.</p>
+        </div>
+        <div class="activity-card">
+          <div class="card-icon">🎃</div>
+          <h3>Soirées à thème</h3>
+          <p>Chandeleur, Halloween, rentrée… Des occasions de jouer et de partager un repas.</p>
+        </div>
+        <div class="activity-card">
+          <div class="card-icon">💬</div>
+          <h3>Le forum</h3>
+          <p>Pour discuter, échanger, et mieux connaître les autres membres.</p>
+        </div>
+        <div class="activity-card">
+          <div class="card-icon">📸</div>
+          <h3>Trombinoscope Discord</h3>
+          <p>Pour mettre des visages sur les pseudos&nbsp;!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CONTACT & LIENS UTILES
+       ============================================= -->
+  <section class="section" id="contact">
+    <div class="section-inner" style="text-align:center;">
+      <h2 class="centered">Nous contacter</h2>
+
+      <div class="contact-links">
+        <a href="mailto:la-guilde@foyerduporteau.fr" class="contact-link">
+          ✉️ la-guilde@foyerduporteau.fr
+        </a>
+        <a href="https://discord.gg/laguilde-poitiers" target="_blank" rel="noopener" class="contact-link">
+          💬 Discord
+        </a>
+        <a href="https://www.facebook.com/LaGuildeDePoitiers" target="_blank" rel="noopener" class="contact-link">
+          📘 Facebook
+        </a>
+        <a href="https://laguilde-poitiers.com" target="_blank" rel="noopener" class="contact-link">
+          🌐 Forum
+        </a>
+      </div>
+
+      <div class="useful-links">
+        <h3 style="font-size:1rem; margin-bottom:0.75rem;">Liens utiles</h3>
+        <a href="https://foyerduporteau.fr" target="_blank" rel="noopener">Site du Foyer du Porteau</a>
+        <a href="https://laguilde-poitiers.com/reglement" target="_blank" rel="noopener">Règlement intérieur</a>
+        <a href="https://laguilde-poitiers.com/tables" target="_blank" rel="noopener">Mise en place des tables</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SECTION FINALE — Appel à l'action
+       ============================================= -->
+  <section class="section section--dark" style="text-align:center; padding:4rem 2rem;">
+    <div class="section-inner">
+      <p style="font-size:1.2rem; max-width:600px; margin:0 auto;">
+        Ta curiosité est piquée&nbsp;? <br>
+        <span class="gold">Rejoins-nous un vendredi soir</span> et qui sait…
+        peut-être à bientôt autour d'une table&nbsp;! 🎲
+      </p>
+      <a href="#contact" class="hero-cta" style="margin-top:1.5rem;">Nous contacter</a>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <p>
+      La Guilde — Section JDR du
+      <a href="https://foyerduporteau.fr" target="_blank" rel="noopener">Foyer du Porteau</a>
+      — Poitiers
+    </p>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT — Menu mobile (toggle hamburger)
+       Script minimal, pas de dépendance externe.
+       ============================================= -->
+  <script>
+    // --- Menu hamburger pour mobile ---
+    // Au clic sur le bouton, on affiche/masque la liste de liens
+    (function() {
+      var toggle = document.querySelector('.navbar-toggle');
+      var links = document.querySelector('.navbar-links');
+
+      toggle.addEventListener('click', function() {
+        var isOpen = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Ferme le menu quand on clique sur un lien (navigation fluide)
+      links.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          links.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
