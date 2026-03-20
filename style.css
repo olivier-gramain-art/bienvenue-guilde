@@ -181,9 +181,7 @@ img {
   width: 160px;
   height: auto;
   margin-bottom: 1.5rem;
-  /* Animation subtile de flottement */
   animation: float 3s ease-in-out infinite;
-  /* Ombre portée pour décoller le logo du fond sombre */
   filter: drop-shadow(0 4px 20px rgba(212, 168, 67, 0.2));
 }
 
@@ -290,6 +288,21 @@ img {
 }
 
 /* ===========================================
+   SOUS-TITRES DE SECTION — h3 dorés réutilisables
+   Remplace les anciens styles inline
+   =========================================== */
+.section-subtitle {
+  font-size: 1.05rem;
+  margin-top: 1.5rem;
+  color: var(--color-gold);
+}
+
+.section-subtitle--large {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+/* ===========================================
    CARDS — Boîtes d'information réutilisables
    =========================================== */
 .cards {
@@ -354,7 +367,7 @@ img {
 
 /* ===========================================
    ÉTAPES — Liste numérotée stylisée
-   Pour "Ta première venue" et processus
+   Pour "Ta première soirée" et processus
    =========================================== */
 .steps {
   list-style: none;
@@ -404,6 +417,10 @@ img {
 /* ===========================================
    TABLEAU — Lexique
    =========================================== */
+.lexique-table-wrapper {
+  overflow-x: auto;
+}
+
 .lexique-table {
   width: 100%;
   border-collapse: collapse;
@@ -477,6 +494,18 @@ img {
 .tarif-details {
   margin-top: 1rem;
   font-size: 0.95rem;
+}
+
+/* ===========================================
+   LISTES SIMPLES — Sans puces, avec espacement
+   =========================================== */
+.plain-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.plain-list li {
+  padding: 0.3rem 0;
 }
 
 /* ===========================================
@@ -564,7 +593,7 @@ img {
 }
 
 /* ===========================================
-   CONTACT — Section finale
+   CONTACT — Section liens et coordonnées
    =========================================== */
 .contact-links {
   display: flex;
@@ -581,13 +610,13 @@ img {
   padding: 0.6rem 1.25rem;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  color: var(--color-text-light);
+  color: var(--color-text-dark);
   font-size: 0.9rem;
   transition: background 0.3s, border-color 0.3s;
 }
 
 .contact-link:hover {
-  background: rgba(212, 168, 67, 0.1);
+  background: rgba(212, 168, 67, 0.15);
   border-color: var(--color-gold);
   color: var(--color-gold);
 }
@@ -595,6 +624,11 @@ img {
 .useful-links {
   margin-top: 2rem;
   text-align: center;
+}
+
+.useful-links h3 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .useful-links a {
@@ -625,6 +659,24 @@ img {
 }
 
 /* ===========================================
+   SECTION CTA FINALE — Appel à l'action
+   =========================================== */
+.section-cta {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.section-cta p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-cta .hero-cta {
+  margin-top: 1.5rem;
+}
+
+/* ===========================================
    FOOTER
    =========================================== */
 .footer {
@@ -646,6 +698,11 @@ img {
 .gold {
   color: var(--color-gold);
   font-weight: 600;
+}
+
+/* Variante pour sections claires (assure le contraste) */
+.section--alt .contact-link {
+  border-color: rgba(0,0,0,0.15);
 }
 
 /* ===========================================
