@@ -693,6 +693,18 @@ img {
 }
 
 /* ===========================================
+   LIENS DISCORD / FORUM — Rappels en bas de section
+   =========================================== */
+.section-links {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.section-links a {
+  font-weight: 600;
+}
+
+/* ===========================================
    HIGHLIGHT TEXT — Texte doré pour emphase
    =========================================== */
 .gold {
