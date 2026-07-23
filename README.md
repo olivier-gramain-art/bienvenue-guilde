@@ -45,11 +45,19 @@ puis ouvrir http://localhost:8000 dans le navigateur.
 
 ---
 
-## Déploiement ⚠️ IMPORTANT
+## Déploiement
 
-Le dépôt GitHub n'est **qu'une sauvegarde**. Le site **n'est pas servi par GitHub Pages** : il est hébergé chez un autre hébergeur (type OVH).
+Ce dépôt (`olivier-gramain-art/bienvenue-guilde`) est le **dépôt principal** du site : la source de référence.
 
-👉 **Pousser sur GitHub ne met PAS le site à jour en ligne.** Pour publier une modification, il faut **uploader manuellement les fichiers modifiés à la racine du site** chez l'hébergeur (via son panneau de gestion ou en FTP).
+Le **webmaster synchronise automatiquement son propre dépôt depuis celui-ci**, puis se charge de la mise en ligne chez l'hébergeur. (Le site n'est pas servi par GitHub Pages — pas de fichier `CNAME`.)
+
+👉 Pour publier une modification :
+
+1. Commiter et **pousser sur `master`** : `git push origin master`.
+2. **Prévenir le webmaster** (ex. sur Discord) qu'une mise à jour est dispo — surtout pour une grosse modif.
+3. Il synchronise et déploie, puis confirme une fois en ligne.
+
+> Autrement dit : côté ce dépôt, on s'arrête au `git push`. Le déploiement final vers l'hébergeur est géré par le webmaster.
 
 ---
 
