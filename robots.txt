@@ -1,0 +1,9 @@
+# robots.txt — La Guilde de Poitiers
+# Ce fichier dit aux moteurs de recherche ce qu'ils ont le droit d'explorer.
+# Ici, on autorise l'indexation complète du site (rien n'est bloqué).
+
+User-agent: *
+Allow: /
+
+# Emplacement du plan du site (aide Google à découvrir toutes les pages).
+Sitemap: https://laguilde-poitiers.com/sitemap.xml

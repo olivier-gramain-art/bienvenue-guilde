@@ -1,0 +1,28 @@
+{
+  "//": "Manifeste web — décrit le site pour l'installation en 'app' sur mobile (icône, nom, couleurs).",
+  "name": "La Guilde de Poitiers",
+  "short_name": "La Guilde",
+  "description": "Association de jeu de rôle à Poitiers.",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#241019",
+  "background_color": "#241019",
+  "icons": [
+    {
+      "src": "favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

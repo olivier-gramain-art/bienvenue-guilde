@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- sitemap.xml — Plan du site de La Guilde de Poitiers -->
+<!-- Site "one-page" : une seule URL pour l'instant. On garde la structure -->
+<!-- standard pour pouvoir ajouter d'autres pages plus tard (ex. page Mélusine, forum). -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <!-- Page d'accueil unique du site -->
+    <loc>https://laguilde-poitiers.com/</loc>
+    <!-- Date de dernière modification (à mettre à jour lors de gros changements de contenu) -->
+    <lastmod>2026-07-23</lastmod>
+    <!-- Fréquence de changement estimée pour les crawlers -->
+    <changefreq>monthly</changefreq>
+    <!-- Priorité relative (1.0 = page la plus importante du site) -->
+    <priority>1.0</priority>
+  </url>
+</urlset>

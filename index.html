@@ -6,8 +6,61 @@
   <title>La Guilde de Poitiers — Jeu de Rôle</title>
   <meta name="description" content="La Guilde de Poitiers : association de jeu de rôle. Rejoins-nous tous les vendredis soir pour des parties de JDR conviviales !">
 
-  <!-- Favicon — utilise le logo de La Guilde -->
-  <link rel="icon" type="image/png" href="logo_guilde.png">
+  <!-- URL canonique : indique à Google l'adresse "officielle" de la page.
+       Évite que les variantes (avec/sans www, avec paramètres) soient vues comme des doublons.
+       IMPORTANT : la version www doit rediriger vers cette version sans www côté hébergeur. -->
+  <link rel="canonical" href="https://laguilde-poitiers.com/">
+
+  <!-- Couleur du thème (barre du navigateur sur mobile, aperçu PWA).
+       Reprend le fond bordeaux très sombre du site. -->
+  <meta name="theme-color" content="#241019">
+
+  <!-- Favicons — jeu complet.
+       Le dé « 86 » du logo, posé sur un fond crème pour rester lisible
+       aussi bien sur un onglet clair que sombre. -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph — contrôle l'aperçu quand le lien est partagé (Discord, Facebook, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="La Guilde de Poitiers — Jeu de Rôle">
+  <meta property="og:description" content="Association de jeu de rôle à Poitiers. Rejoins-nous tous les vendredis soir pour des parties de JDR conviviales !">
+  <meta property="og:url" content="https://laguilde-poitiers.com/">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:image" content="https://laguilde-poitiers.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Données structurées JSON-LD (type Organization).
+       Aide Google à identifier précisément l'association et à la distinguer
+       des autres "La Guilde" existant ailleurs en France/Canada. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "La Guilde de Poitiers",
+    "alternateName": "La Guilde — section JDR du Foyer du Porteau",
+    "url": "https://laguilde-poitiers.com/",
+    "logo": "https://laguilde-poitiers.com/logo_guilde.png",
+    "email": "la-guilde@foyerduporteau.fr",
+    "sameAs": [
+      "https://www.facebook.com/LaGuildeDePoitiers",
+      "https://discord.gg/YWfamZnqcZ",
+      "https://forum.laguilde-poitiers.com"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "138 rue de la Grange Saint Pierre",
+      "addressLocality": "Poitiers",
+      "postalCode": "86000",
+      "addressCountry": "FR"
+    }
+  }
+  </script>
 
   <!-- Google Fonts : Cinzel (titres, esprit fantasy élégant) + Inter (corps, lisibilité) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +77,7 @@
   <nav class="navbar" role="navigation" aria-label="Navigation principale">
     <div class="navbar-inner">
       <a href="#accueil" class="navbar-brand">
-        <img src="logo_guilde.png" alt="Logo La Guilde">
+        <img src="logo_guilde_mark.png" alt="Logo La Guilde" width="320" height="205">
         La Guilde
       </a>
 
@@ -48,7 +101,7 @@
        HERO — Écran d'accueil avec titre et accroche
        ============================================= -->
   <section class="hero" id="accueil">
-    <img src="logo_guilde.png" alt="Logo La Guilde de Poitiers" class="hero-logo">
+    <img src="logo_guilde_mark.png" alt="Logo La Guilde de Poitiers" class="hero-logo" width="320" height="205">
     <h1>Bienvenue à La Guilde de Poitiers&nbsp;!</h1>
     <p class="hero-subtitle">
       Tu cherches des parties de jeu de rôle à Poitiers&nbsp;? Tu es au bon endroit&nbsp;!
